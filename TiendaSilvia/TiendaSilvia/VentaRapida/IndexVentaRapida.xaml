@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaSilvia.VentaRapida.IndexVentaRapida">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="White">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                    <Button Text="AGREGAR VENTA" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" BackgroundColor="Orange" 
+                            BorderWidth="3" BorderColor="Black" CornerRadius="10" Clicked="Button_Clicked"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                    <Button Text="VENTA DIARIA" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" BackgroundColor="Orange" 
+                            BorderWidth="3" BorderColor="Black" CornerRadius="10" Clicked="Button_Clicked_1"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                    <Button Text="VENTA MENSUAL" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" BackgroundColor="Orange" 
+                            BorderWidth="3" BorderColor="Black" CornerRadius="10" Clicked="Button_Clicked_2"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
