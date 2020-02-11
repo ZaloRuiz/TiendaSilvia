@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
+using TiendaSilvia.VentasMes;
 
 namespace TiendaSilvia.Droid
 {
@@ -19,6 +21,18 @@ namespace TiendaSilvia.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            //allowing the device to change the screen orientation based on the rotation 
+            MessagingCenter.Subscribe<CalendarioVenta>(this, "AllowLandscapet", sender =>
+            {
+                RequestedOrientation = ScreenOrientation.Landscape;
+            });
+
+            //during page close setting back to portrait
+            MessagingCenter.Subscribe<CalendarioVenta>(this, "PreventLandscape", sender =>
+            {
+                RequestedOrientation = ScreenOrientation.Portrait;
+            });
             LoadApplication(new App());
         }
     }

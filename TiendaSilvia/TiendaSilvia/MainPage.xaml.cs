@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TiendaSilvia.VentaRapida;
+using TiendaSilvia.VentasMes;
 using Xamarin.Forms;
 
 namespace TiendaSilvia
@@ -18,6 +19,11 @@ namespace TiendaSilvia
         private void BtnVentaRapida_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new IndexVentaRapida());
+        }
+
+        private void BtnCalendarioVenta_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CalendarioVenta());
         }
     }
 }
