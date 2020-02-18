@@ -31,6 +31,7 @@ namespace TiendaSilvia.VentaRapida
         private void Button_Clicked_2(object sender, EventArgs e)
         {
             //venta mensual
+            Navigation.PushAsync(new Graficos());
         }
     }
 }

@@ -27,11 +27,12 @@ namespace TiendaSilvia.VentaRapida
 			InitializeComponent ();
             fechaActual = DateTime.Today.ToString("dd/MM/yyy");
             txtFecha.Text = fechaActual;
+            ObtenerTotal();
+            ObtenerLista();
         }
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
 
+        public async void ObtenerLista()
+        {
             HttpClient client = new HttpClient();
             var url_tienda = new Uri("http://dmrbolivia.online/api_tienda_silvia/VentaRapida/listaVentaRapida.php");
             string result = await client.GetStringAsync(url_tienda);
@@ -52,7 +53,6 @@ namespace TiendaSilvia.VentaRapida
             }
 
             listVentaRapida.ItemsSource = ventas_rapidas.Distinct();
-            ObtenerTotal();
         }
 
         public async void ObtenerTotal()

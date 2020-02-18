@@ -14,15 +14,26 @@
                     <DatePicker x:Name="pickFecha" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
                 <StackLayout>
-                    <Label Text="Descripcion: " TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Editor x:Name="txtDescripion" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="100" Placeholder="Descripcion..."/>
+                    <Label Text="Medida: " TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker TextColor="Black" Title="Elija una medida" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <Picker.Items>
+                            <x:String>1</x:String>
+                            <x:String>1/2</x:String>
+                            <x:String>1/4</x:String>
+                            <x:String>CAJA</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Cantidad: " TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry x:Name="txtCantidad" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder="Cantidad..." Keyboard="Numeric"/>
                 </StackLayout>
                 <StackLayout>
-                    <Label Text="Monto: " TextColor="Black" Font="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label Text="Producto: " TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Editor x:Name="txtDescripion" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="100" Placeholder="Descripcion..."/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Bs.: " TextColor="Black" Font="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry x:Name="txtMonto" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder="Monto..." Keyboard="Numeric"/>
                 </StackLayout>
                 <StackLayout Padding="0, 40, 0, 0">

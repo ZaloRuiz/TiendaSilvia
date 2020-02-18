@@ -16,7 +16,8 @@ namespace TiendaSilvia.VentasMes
     {
         private DateTime Hoy = DateTime.Today;
         private int DiaToday = 0;
-        //private DateTime DiasFebrero = DateTime.Today();
+        private decimal TotalEnero = 0;
+        private decimal TotalFebrero = 0;
         public decimal unofeb = 0;
         public decimal dosfeb = 0;
         public decimal tresfeb = 0;
@@ -69,19 +70,75 @@ namespace TiendaSilvia.VentasMes
             DateTime fechaMesNoviembre = new DateTime(2020, 11, 1);
             DateTime fechaMesDiciembre = new DateTime(2020, 12, 1);
 
-            int valDia = 0;
+            int valDiaEnero = 0;
+            int valDiaFebrero = 0;
+            int valDiaMarzo = 0;
+            int valDiaAbril = 0;
+            int valDiaMayo = 0;
+            int valDiaJunio = 0;
+            int valDiaJulio = 0;
+            int valDiaAgosto = 0;
+            int valDiaSeptiembre = 0;
+            int valDiaOctubre = 0;
+            int valDiaNoviembre = 0;
+            int valDiaDiciembre = 0;
+
             HttpClient client = new HttpClient();
             var response = await client.GetStringAsync("http://dmrbolivia.online/api_tienda_silvia/VentaRapida/listaVentaRapida.php");
             var dataVR = JsonConvert.DeserializeObject<List<venta_rapida>>(response);
-
-            //Mes de Febrero
-            for(int i = 0; i <= 29; i++, valDia++)
+            //Mes de Enero
+            for(int iEne = 0; iEne <= 31; iEne++, valDiaEnero++)
             {
                 foreach (var item in dataVR)
                 {
-                    if (item.fecha.Date == fechaMesFebrero.AddDays(valDia))
+                    if(item.fecha.Date == fechaMesEnero.AddDays(valDiaEnero))
                     {
-                        FebreroArr[i] = FebreroArr[i] + item.monto;
+                        EneroArr[iEne] = EneroArr[iEne] + item.monto;
+                        TotalEnero = TotalEnero + item.monto;
+                    }
+                }
+            }
+            txtEne1.Text = EneroArr[0].ToString();
+            txtEne2.Text = EneroArr[1].ToString();
+            txtEne3.Text = EneroArr[2].ToString();
+            txtEne4.Text = EneroArr[3].ToString();
+            txtEne5.Text = EneroArr[4].ToString();
+            txtEne6.Text = EneroArr[5].ToString();
+            txtEne7.Text = EneroArr[6].ToString();
+            txtEne8.Text = EneroArr[7].ToString();
+            txtEne9.Text = EneroArr[8].ToString();
+            txtEne10.Text = EneroArr[9].ToString();
+            txtEne11.Text = EneroArr[10].ToString();
+            txtEne12.Text = EneroArr[11].ToString();
+            txtEne13.Text = EneroArr[12].ToString();
+            txtEne14.Text = EneroArr[13].ToString();
+            txtEne15.Text = EneroArr[14].ToString();
+            txtEne16.Text = EneroArr[15].ToString();
+            txtEne17.Text = EneroArr[16].ToString();
+            txtEne18.Text = EneroArr[17].ToString();
+            txtEne19.Text = EneroArr[18].ToString();
+            txtEne20.Text = EneroArr[19].ToString();
+            txtEne21.Text = EneroArr[20].ToString();
+            txtEne22.Text = EneroArr[21].ToString();
+            txtEne23.Text = EneroArr[22].ToString();
+            txtEne24.Text = EneroArr[23].ToString();
+            txtEne25.Text = EneroArr[24].ToString();
+            txtEne26.Text = EneroArr[25].ToString();
+            txtEne27.Text = EneroArr[26].ToString();
+            txtEne28.Text = EneroArr[27].ToString();
+            txtEne29.Text = EneroArr[28].ToString();
+            txtEne30.Text = EneroArr[29].ToString();
+            txtEne31.Text = EneroArr[30].ToString();
+            txtTotalEnero.Text = TotalEnero.ToString() + " BS.";
+            //Mes de Febrero
+            for (int iFeb = 0; iFeb <= 29; iFeb++, valDiaFebrero++)
+            {
+                foreach (var item in dataVR)
+                {
+                    if (item.fecha.Date == fechaMesFebrero.AddDays(valDiaFebrero))
+                    {
+                        FebreroArr[iFeb] = FebreroArr[iFeb] + item.monto;
+                        TotalFebrero = TotalFebrero + item.monto;
                     }
                     else
                     {
@@ -118,15 +175,7 @@ namespace TiendaSilvia.VentasMes
             txtFeb27.Text = FebreroArr[26].ToString();
             txtFeb28.Text = FebreroArr[27].ToString();
             txtFeb29.Text = FebreroArr[28].ToString();
-        }
-
-        public async void GetDataCalendario()
-        {
-            HttpClient client = new HttpClient();
-            var response = await client.GetStringAsync("http://dmrbolivia.online/api_tienda_silvia/VentaRapida/listaVentaRapida.php");
-            var dataVR = JsonConvert.DeserializeObject<List<venta_rapida>>(response);
-
-
+            txtTotalFebrero.Text = TotalFebrero.ToString()+" BS.";
         }
     }
 }

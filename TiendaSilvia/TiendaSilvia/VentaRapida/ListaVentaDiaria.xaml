@@ -16,8 +16,8 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#0F5BCB" Padding="0">
                 <Label Text="Cantidad" FontSize="Medium" Padding="5" HorizontalOptions="StartAndExpand" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-                <Label Text="Descripcion" FontSize="Medium" Padding="5" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-                <Label Text="Monto" FontSize="Medium" Padding="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="Producto" FontSize="Medium" Padding="5" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="BS." FontSize="Medium" Padding="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
             </StackLayout>
             <StackLayout Padding="10, 0, 10, 0">
                 <ScrollView>
