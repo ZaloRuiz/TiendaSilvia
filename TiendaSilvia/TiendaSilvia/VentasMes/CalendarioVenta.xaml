@@ -197,6 +197,9 @@
                         <Label Text="TOTAL MES: " TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
                         <Label x:Name="txtTotalEnero" FontSize="Medium" TextColor="Green"/>
                     </StackLayout>
+                    <StackLayout Padding="20">
+                        <Button x:Name="btnGraficos" Text="Graficos?" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Orange" TextColor="White"  Clicked="BtnGraficos_Clicked"/>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
@@ -395,6 +398,9 @@
                         <Label Text="TOTAL MES: " TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
                         <Label x:Name="txtTotalFebrero" FontSize="Medium" TextColor="Green"/>
                     </StackLayout>
+                </StackLayout>
+                <StackLayout Padding="20">
+                    <Button x:Name="btnGraficosFeb" Text="Graficos?" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Orange" TextColor="White"  Clicked="BtnGraficosFeb_Clicked"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using TiendaSilvia.Datos;
+using TiendaSilvia.VentaRapida;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -176,6 +177,16 @@ namespace TiendaSilvia.VentasMes
             txtFeb28.Text = FebreroArr[27].ToString();
             txtFeb29.Text = FebreroArr[28].ToString();
             txtTotalFebrero.Text = TotalFebrero.ToString()+" BS.";
+        }
+
+        private void BtnGraficos_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Graficos());
+        }
+
+        private void BtnGraficosFeb_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Graficos());
         }
     }
 }

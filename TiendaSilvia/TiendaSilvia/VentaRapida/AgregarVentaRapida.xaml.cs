@@ -31,8 +31,9 @@ namespace TiendaSilvia.VentaRapida
                         venta_rapida venta_ = new venta_rapida()
                         {
                             fecha = pickFecha.Date,
-                            descripcion = txtDescripion.Text,
+                            producto = txtDescripion.Text,
                             cantidad = Convert.ToInt32(txtCantidad.Text),
+                            detalle_cantidad = pickMedida + " " + pickContenedor,
                             monto = Convert.ToDecimal(txtMonto.Text)
                         };
                         var json = JsonConvert.SerializeObject(venta_);
@@ -64,6 +65,39 @@ namespace TiendaSilvia.VentaRapida
             else
             {
                 await DisplayAlert("ERROR", "El campo de Fecha esta vacio", "OK");
+            }
+        }
+        private string pickMedida;
+        private void MedidaPick_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                pickMedida = picker.Items[selectedIndex];
+            }
+        }
+        private string pickContenedor;
+        private void ContenedorPick_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                pickContenedor = picker.Items[selectedIndex];
+            }
+
+            if(pickContenedor == "Unidad")
+            {
+                medidaPick.IsVisible = false;
+                tituloMedida.IsVisible = false;
+            }
+            else
+            {
+                medidaPick.IsVisible = true;
+                tituloMedida.IsVisible = true;
             }
         }
     }

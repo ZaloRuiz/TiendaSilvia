@@ -40,13 +40,14 @@ namespace TiendaSilvia.VentaRapida
 
             foreach(var item in data)
             {
-                if(item.fecha == fechaHoy)
+                if(item.fecha.Date == fechaHoy)
                 {
                     ventas_rapidas.Add(new venta_rapida
                     {
                         fecha = item.fecha,
-                        descripcion = item.descripcion,
+                        producto = item.producto,
                         cantidad = item.cantidad,
+                        detalle_cantidad = item.detalle_cantidad,
                         monto = item.monto
                     });
                 }

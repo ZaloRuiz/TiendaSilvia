@@ -10,7 +10,6 @@
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
         <Button x:Name="btnVentaRapida" Text="VENTAS RAPIDAS" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="BtnVentaRapida_Clicked"/>
-        <Button x:Name="btnCalendarioVenta" Text="CALENDARIO VENTAS" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="BtnCalendarioVenta_Clicked"/>
     </StackLayout>
 
 </ContentPage>

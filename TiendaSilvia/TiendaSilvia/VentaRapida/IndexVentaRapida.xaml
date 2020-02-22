@@ -14,7 +14,7 @@
                             BorderWidth="3" BorderColor="Black" CornerRadius="10" Clicked="Button_Clicked_1"/>
                 </StackLayout>
                 <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                    <Button Text="VENTA MENSUAL" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" BackgroundColor="Orange" 
+                    <Button Text="CALENDARIO" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" BackgroundColor="Orange" 
                             BorderWidth="3" BorderColor="Black" CornerRadius="10" Clicked="Button_Clicked_2"/>
                 </StackLayout>
             </StackLayout>

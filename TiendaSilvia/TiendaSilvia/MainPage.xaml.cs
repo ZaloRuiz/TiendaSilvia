@@ -20,10 +20,5 @@ namespace TiendaSilvia
         {
             Navigation.PushAsync(new IndexVentaRapida());
         }
-
-        private void BtnCalendarioVenta_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new CalendarioVenta());
-        }
     }
 }

@@ -14,23 +14,36 @@
                     <DatePicker x:Name="pickFecha" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
                 <StackLayout>
-                    <Label Text="Medida: " TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker TextColor="Black" Title="Elija una medida" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Label Text="Contenedor" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker x:Name="contenedorPick" TextColor="Black" Title="Elija un contenedor" VerticalOptions="Center" HorizontalOptions="FillAndExpand"
+                            SelectedIndexChanged="ContenedorPick_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>Unidad</x:String>
+                            <x:String>Bolsa</x:String>
+                            <x:String>Paquete</x:String>
+                            <x:String>Caja</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+                <StackLayout>
+                    <Label x:Name="tituloMedida" Text="Medida: " TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker x:Name="medidaPick" TextColor="Black" Title="Elija una medida" VerticalOptions="Center" HorizontalOptions="FillAndExpand" 
+                            SelectedIndexChanged="MedidaPick_SelectedIndexChanged">
                         <Picker.Items>
                             <x:String>1</x:String>
                             <x:String>1/2</x:String>
                             <x:String>1/4</x:String>
-                            <x:String>CAJA</x:String>
+                            <x:String>12</x:String>
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Cantidad: " TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry x:Name="txtCantidad" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder="Cantidad..." Keyboard="Numeric"/>
+                    <Entry x:Name="txtCantidad" Text="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder="Cantidad..." Keyboard="Numeric"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Producto: " TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Editor x:Name="txtDescripion" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="100" Placeholder="Descripcion..."/>
+                    <Editor x:Name="txtDescripion" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder="Descripcion..."/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Bs.: " TextColor="Black" Font="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>

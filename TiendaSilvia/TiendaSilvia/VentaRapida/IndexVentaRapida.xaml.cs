@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TiendaSilvia.VentasMes;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,7 +31,7 @@ namespace TiendaSilvia.VentaRapida
         private void Button_Clicked_2(object sender, EventArgs e)
         {
             //venta mensual
-            Navigation.PushAsync(new Graficos());
+            Navigation.PushAsync(new CalendarioVenta());
         }
     }
 }
