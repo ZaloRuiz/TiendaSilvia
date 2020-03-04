@@ -188,5 +188,41 @@ namespace TiendaSilvia.VentasMes
         {
             Navigation.PushAsync(new Graficos());
         }
+        private void BtnGraficosMarzo_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnGraficosAbril_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        //
+        private void BtnGraficosMayo_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void BtnGraficosJunio_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void BtnGraficosJulio_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void BtnGraficosAgosto_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnGraficosSep_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnGraficosOctubre_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
