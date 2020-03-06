@@ -16,22 +16,23 @@ namespace TiendaSilvia.VentaRapida
 		{
 			InitializeComponent ();
 		}
-        private void Button_Clicked(object sender, EventArgs e)
+
+        private void Button_Clicked_3(object sender, EventArgs e)
         {
-            //agregar venta rapida
-            Navigation.PushAsync(new AgregarVentaRapida());
+            //CALENDARIO
+            Navigation.PushAsync(new CalendarioVenta());
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private void Button_Clicked_4(object sender, EventArgs e)
         {
-            //venta rapida diaria
+            //venta diaria
             Navigation.PushAsync(new ListaVentaDiaria());
         }
 
-        private void Button_Clicked_2(object sender, EventArgs e)
+        private void Button_Clicked_5(object sender, EventArgs e)
         {
-            //venta mensual
-            Navigation.PushAsync(new CalendarioVenta());
+            //agregar venta rapida
+            Navigation.PushAsync(new AgregarVentaRapida());
         }
     }
 }
