@@ -2423,6 +2423,10 @@
                         <Label Text="TOTAL MES: " TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
                         <Label x:Name="txtTotalDiciembre" FontSize="Medium" TextColor="Green"/>
                     </StackLayout>
+                    <StackLayout BackgroundColor="White" HorizontalOptions="Center" Padding="20">
+                        <Label Text="TOTAL 2020: " TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                        <Label x:Name="txtTotal2020" FontSize="Medium" TextColor="Green"/>
+                    </StackLayout>
                     <StackLayout Padding="20">
                         <Button x:Name="btnGraficosDiciembre" Text="Graficos?" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Orange" TextColor="White"  Clicked="BtnGraficosDiciembre_Clicked"/>
                     </StackLayout>

@@ -28,7 +28,8 @@ namespace TiendaSilvia.VentasMes
         private decimal TotalSeptiembre = 0;
         private decimal TotalOctubre = 0;
         private decimal TotalNoviembre = 0;
-        private decimal TotalDiciembre = 0;       
+        private decimal TotalDiciembre = 0;
+        private decimal Total2020 = 0;
         
         public CalendarioVenta()
         {
@@ -54,6 +55,19 @@ namespace TiendaSilvia.VentasMes
         private decimal[] OctubreArr = new decimal[500];
         private decimal[] NoviembreArr = new decimal[500];
         private decimal[] DiciembreArr = new decimal[500];
+
+        public async void GetTotal2020()
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.GetStringAsync("http://dmrbolivia.online/api_tienda_silvia/VentaRapida/listaVentaRapida.php");
+            var dataVR = JsonConvert.DeserializeObject<List<venta_rapida>>(response);
+
+            foreach(var item in dataVR)
+            {
+                Total2020 = Total2020 + item.monto;
+            }
+            txtTotal2020.Text = Total2020.ToString();
+        }
 
         public async void GetDataEnero()
         {
@@ -226,461 +240,6 @@ namespace TiendaSilvia.VentasMes
 
             GetDataAbril();
         }
-        #region
-        //public void GetCalendarioAbril()
-        //{
-        //    StackLayout stkCal = new StackLayout();
-        //    stkCal.BackgroundColor = Color.Gray;
-        //    stkCal.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    stkCalendarioAbril.Children.Add(stkCal);
-
-        //    Grid gridCal = new Grid();
-        //    gridCal.BackgroundColor = Color.Gray;
-        //    gridCal.ColumnSpacing = 1;
-        //    gridCal.RowSpacing = 1;
-        //    gridCal.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    gridCal.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
-        //    stkCal.Children.Add(gridCal);
-
-        //    Label txtLunes = new Label();
-        //    txtLunes.Text = "LUN.";
-        //    txtLunes.FontSize = 12;
-        //    txtLunes.FontAttributes = FontAttributes.Bold;
-        //    txtLunes.BackgroundColor = Color.FromHex("#fcdd12");
-        //    txtLunes.TextColor = Color.Black;
-        //    txtLunes.VerticalTextAlignment = TextAlignment.Center;
-        //    txtLunes.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtLunes.Margin = 1;
-        //    gridCal.Children.Add(txtLunes, 0, 0);
-
-        //    Label txtMartes = new Label();
-        //    txtMartes.Text = "MAR.";
-        //    txtMartes.FontSize = 12;
-        //    txtMartes.FontAttributes = FontAttributes.Bold;
-        //    txtMartes.BackgroundColor = Color.FromHex("#fcdd12");
-        //    txtMartes.TextColor = Color.Black;
-        //    txtMartes.VerticalTextAlignment = TextAlignment.Center;
-        //    txtMartes.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtMartes.Margin = 1;
-        //    gridCal.Children.Add(txtMartes, 1, 0);
-
-        //    Label txtMiercoles = new Label();
-        //    txtMiercoles.Text = "MIÉ.";
-        //    txtMiercoles.FontSize = 12;
-        //    txtMiercoles.FontAttributes = FontAttributes.Bold;
-        //    txtMiercoles.BackgroundColor = Color.FromHex("#fcdd12");
-        //    txtMiercoles.TextColor = Color.Black;
-        //    txtMiercoles.VerticalTextAlignment = TextAlignment.Center;
-        //    txtMiercoles.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtMiercoles.Margin = 1;
-        //    gridCal.Children.Add(txtMiercoles, 2, 0);
-
-        //    Label txtJueves = new Label();
-        //    txtJueves.Text = "JUE.";
-        //    txtJueves.FontSize = 12;
-        //    txtJueves.FontAttributes = FontAttributes.Bold;
-        //    txtJueves.BackgroundColor = Color.FromHex("#fcdd12");
-        //    txtJueves.TextColor = Color.Black;
-        //    txtJueves.VerticalTextAlignment = TextAlignment.Center;
-        //    txtJueves.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtJueves.Margin = 1;
-        //    gridCal.Children.Add(txtJueves, 3, 0);
-
-        //    Label txtViernes = new Label();
-        //    txtViernes.Text = "VIE.";
-        //    txtViernes.FontSize = 12;
-        //    txtViernes.FontAttributes = FontAttributes.Bold;
-        //    txtViernes.BackgroundColor = Color.FromHex("#fcdd12");
-        //    txtViernes.TextColor = Color.Black;
-        //    txtViernes.VerticalTextAlignment = TextAlignment.Center;
-        //    txtViernes.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtViernes.Margin = 1;
-        //    gridCal.Children.Add(txtViernes, 4, 0);
-
-        //    Label txtSabado = new Label();
-        //    txtSabado.Text = "SAB.";
-        //    txtSabado.FontSize = 12;
-        //    txtSabado.FontAttributes = FontAttributes.Bold;
-        //    txtSabado.BackgroundColor = Color.FromHex("#fcdd12");
-        //    txtSabado.TextColor = Color.Black;
-        //    txtSabado.VerticalTextAlignment = TextAlignment.Center;
-        //    txtSabado.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtSabado.Margin = 1;
-        //    gridCal.Children.Add(txtSabado, 5, 0);
-
-        //    Label txtDomingo = new Label();
-        //    txtDomingo.Text = "DOM.";
-        //    txtDomingo.FontSize = 12;
-        //    txtDomingo.FontAttributes = FontAttributes.Bold;
-        //    txtDomingo.BackgroundColor = Color.FromHex("#fcdd12");
-        //    txtDomingo.TextColor = Color.Black;
-        //    txtDomingo.VerticalTextAlignment = TextAlignment.Center;
-        //    txtDomingo.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtDomingo.Margin = 1;
-        //    gridCal.Children.Add(txtDomingo, 6, 0);
-
-        //    Grid gridCal2 = new Grid();
-        //    gridCal2.BackgroundColor = Color.Gray;
-        //    gridCal2.ColumnSpacing = 1;
-        //    gridCal2.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    gridCal2.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal2.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal2.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal2.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal2.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal2.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal2.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        //    gridCal2.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70) });
-        //    gridCal2.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70) });
-        //    gridCal2.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70) });
-        //    gridCal2.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70) });
-        //    stkCal.Children.Add(gridCal2);
-
-        //    //1RA SEMANA    
-        //    StackLayout stkMesAnt1 = new StackLayout();
-        //    stkMesAnt1.BackgroundColor = Color.LightGray;
-        //    gridCal2.Children.Add(stkMesAnt1, 0, 0);
-
-        //    Label txtMesAnt30 = new Label();
-        //    txtMesAnt30.Text = "30";
-        //    txtMesAnt30.TextColor = Color.Black;
-        //    txtMesAnt30.FontAttributes = FontAttributes.Bold;
-        //    txtMesAnt30.HorizontalOptions = LayoutOptions.Start;
-        //    txtMesAnt30.VerticalOptions = LayoutOptions.Start;
-        //    txtMesAnt30.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtMesAnt30.Margin = 1;
-        //    stkMesAnt1.Children.Add(txtMesAnt30);
-
-        //    Label txtMesAntT30 = new Label();
-        //    txtMesAntT30.Text = " ";
-        //    txtMesAntT30.TextColor = Color.Blue;
-        //    txtMesAntT30.HorizontalOptions = LayoutOptions.Center;
-        //    txtMesAntT30.VerticalOptions = LayoutOptions.Center;
-        //    txtMesAntT30.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtMesAntT30.Margin = 1;
-        //    stkMesAnt1.Children.Add(txtMesAntT30);
-
-        //    StackLayout stkMesAnt2 = new StackLayout();
-        //    stkMesAnt2.BackgroundColor = Color.LightGray;
-        //    gridCal2.Children.Add(stkMesAnt2, 1, 0);
-
-        //    Label txtMesAnt31 = new Label();
-        //    txtMesAnt31.Text = "31";
-        //    txtMesAnt31.TextColor = Color.Black;
-        //    txtMesAnt31.FontAttributes = FontAttributes.Bold;
-        //    txtMesAnt31.HorizontalOptions = LayoutOptions.Start;
-        //    txtMesAnt31.VerticalOptions = LayoutOptions.Start;
-        //    txtMesAnt31.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtMesAnt31.Margin = 1;
-        //    stkMesAnt2.Children.Add(txtMesAnt31);
-
-        //    Label txtMesAntT31 = new Label();
-        //    txtMesAntT31.Text = " ";
-        //    txtMesAntT31.TextColor = Color.Blue;
-        //    txtMesAntT31.HorizontalOptions = LayoutOptions.Center;
-        //    txtMesAntT31.VerticalOptions = LayoutOptions.Center;
-        //    txtMesAntT31.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtMesAntT31.Margin = 1;
-        //    stkMesAnt2.Children.Add(txtMesAntT31);
-
-        //    StackLayout stkAbril1 = new StackLayout();
-        //    stkAbril1.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril1, 2, 0);
-
-        //    Label txtDiaAbril1 = new Label();
-        //    txtDiaAbril1.Text = "1";
-        //    txtDiaAbril1.TextColor = Color.Black;
-        //    txtDiaAbril1.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril1.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril1.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril1.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril1.Margin = 1;
-        //    stkAbril1.Children.Add(txtDiaAbril1);
-
-        //    Label txtabril1 = new Label();
-        //    txtabril1.FontSize = 12;
-        //    txtabril1.TextColor = Color.Blue;
-        //    txtabril1.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril1.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril1.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril1.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril1.Margin = 1;
-        //    stkAbril1.Children.Add(txtabril1);
-
-        //    StackLayout stkAbril2 = new StackLayout();
-        //    stkAbril2.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril2, 3, 0);
-
-        //    Label txtDiaAbril2 = new Label();
-        //    txtDiaAbril2.Text = "2";
-        //    txtDiaAbril2.TextColor = Color.Black;
-        //    txtDiaAbril2.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril2.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril2.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril2.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril2.Margin = 1;
-        //    stkAbril2.Children.Add(txtDiaAbril2);
-
-        //    Label txtabril2 = new Label();
-        //    txtabril2.FontSize = 12;
-        //    txtabril2.TextColor = Color.Blue;
-        //    txtabril2.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril2.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril2.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril2.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril2.Margin = 1;
-        //    stkAbril2.Children.Add(txtabril2);
-
-        //    StackLayout stkAbril3 = new StackLayout();
-        //    stkAbril3.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril3, 4, 0);
-
-        //    Label txtDiaAbril3 = new Label();
-        //    txtDiaAbril3.Text = "3";
-        //    txtDiaAbril3.TextColor = Color.Black;
-        //    txtDiaAbril3.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril3.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril3.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril3.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril3.Margin = 1;
-        //    stkAbril3.Children.Add(txtDiaAbril3);
-
-        //    Label txtabril3 = new Label();
-        //    txtabril3.FontSize = 12;
-        //    txtabril3.TextColor = Color.Blue;
-        //    txtabril3.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril3.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril3.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril3.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril3.Margin = 1;
-        //    stkAbril3.Children.Add(txtabril3);
-
-        //    StackLayout stkAbril4 = new StackLayout();
-        //    stkAbril4.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril4, 5, 0);
-
-        //    Label txtDiaAbril4 = new Label();
-        //    txtDiaAbril4.Text = "4";
-        //    txtDiaAbril4.TextColor = Color.Black;
-        //    txtDiaAbril4.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril4.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril4.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril4.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril4.Margin = 1;
-        //    stkAbril4.Children.Add(txtDiaAbril4);
-
-        //    Label txtabril4 = new Label();
-        //    txtabril4.FontSize = 12;
-        //    txtabril4.TextColor = Color.Blue;
-        //    txtabril4.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril4.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril4.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril4.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril4.Margin = 1;
-        //    stkAbril4.Children.Add(txtabril4);
-
-        //    StackLayout stkAbril5 = new StackLayout();
-        //    stkAbril5.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril5, 6, 0);
-
-        //    Label txtDiaAbril5 = new Label();
-        //    txtDiaAbril5.Text = "5";
-        //    txtDiaAbril5.TextColor = Color.Black;
-        //    txtDiaAbril5.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril5.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril5.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril5.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril5.Margin = 1;
-        //    stkAbril5.Children.Add(txtDiaAbril5);
-
-        //    Label txtabril5 = new Label();
-        //    txtabril5.FontSize = 12;
-        //    txtabril5.TextColor = Color.Blue;
-        //    txtabril5.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril5.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril5.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril5.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril5.Margin = 1;
-        //    stkAbril5.Children.Add(txtabril5);
-
-
-        //    //2DA SEMANA    
-        //    StackLayout stkAbril6 = new StackLayout();
-        //    stkAbril6.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril6, 0, 1);
-
-        //    Label txtDiaAbril6 = new Label();
-        //    txtDiaAbril6.Text = "6";
-        //    txtDiaAbril6.TextColor = Color.Black;
-        //    txtDiaAbril6.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril6.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril6.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril6.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril6.Margin = 1;
-        //    stkAbril6.Children.Add(txtDiaAbril6);
-
-        //    Label txtabril6 = new Label();
-        //    txtabril6.FontSize = 12;
-        //    txtabril6.TextColor = Color.Blue;
-        //    txtabril6.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril6.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril6.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril6.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril6.Margin = 1;
-        //    stkAbril6.Children.Add(txtabril6);
-
-        //    StackLayout stkAbril7 = new StackLayout();
-        //    stkAbril7.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril7, 1, 1);
-
-        //    Label txtDiaAbril7 = new Label();
-        //    txtDiaAbril7.Text = "7";
-        //    txtDiaAbril7.TextColor = Color.Black;
-        //    txtDiaAbril7.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril7.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril7.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril7.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril7.Margin = 1;
-        //    stkAbril7.Children.Add(txtDiaAbril7);
-
-        //    Label txtabril7 = new Label();
-        //    txtabril7.FontSize = 12;
-        //    txtabril7.TextColor = Color.Blue;
-        //    txtabril7.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril7.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril7.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril7.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril7.Margin = 1;
-        //    stkAbril7.Children.Add(txtabril7);
-
-        //    StackLayout stkAbril8 = new StackLayout();
-        //    stkAbril8.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril8, 2, 1);
-
-        //    Label txtDiaAbril8 = new Label();
-        //    txtDiaAbril8.Text = "8";
-        //    txtDiaAbril8.TextColor = Color.Black;
-        //    txtDiaAbril8.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril8.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril8.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril8.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril8.Margin = 1;
-        //    stkAbril8.Children.Add(txtDiaAbril8);
-
-        //    Label txtabril8 = new Label();
-        //    txtabril8.FontSize = 12;
-        //    txtabril8.TextColor = Color.Blue;
-        //    txtabril8.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril8.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril8.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril8.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril8.Margin = 1;
-        //    stkAbril8.Children.Add(txtabril8);
-
-        //    StackLayout stkAbril9 = new StackLayout();
-        //    stkAbril9.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril9, 3, 1);
-
-        //    Label txtDiaAbril9 = new Label();
-        //    txtDiaAbril9.Text = "9";
-        //    txtDiaAbril9.TextColor = Color.Black;
-        //    txtDiaAbril9.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril9.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril9.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril9.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril9.Margin = 1;
-        //    stkAbril9.Children.Add(txtDiaAbril9);
-
-        //    Label txtabril9 = new Label();
-        //    txtabril9.FontSize = 12;
-        //    txtabril9.TextColor = Color.Blue;
-        //    txtabril9.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril9.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril9.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril9.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril9.Margin = 1;
-        //    stkAbril9.Children.Add(txtabril9);
-
-        //    StackLayout stkAbril10 = new StackLayout();
-        //    stkAbril10.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril10, 4, 1);
-
-        //    Label txtDiaAbril10 = new Label();
-        //    txtDiaAbril10.Text = "10";
-        //    txtDiaAbril10.TextColor = Color.Black;
-        //    txtDiaAbril10.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril10.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril10.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril10.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril10.Margin = 1;
-        //    stkAbril10.Children.Add(txtDiaAbril10);
-
-        //    Label txtabril10 = new Label();
-        //    txtabril10.FontSize = 12;
-        //    txtabril10.TextColor = Color.Blue;
-        //    txtabril10.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril10.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril10.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril10.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril10.Margin = 1;
-        //    stkAbril10.Children.Add(txtabril10);
-
-        //    StackLayout stkAbril11 = new StackLayout();
-        //    stkAbril11.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril11, 5, 1);
-
-        //    Label txtDiaAbril11 = new Label();
-        //    txtDiaAbril11.Text = "11";
-        //    txtDiaAbril11.TextColor = Color.Black;
-        //    txtDiaAbril11.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril11.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril11.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril11.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril11.Margin = 1;
-        //    stkAbril11.Children.Add(txtDiaAbril11);
-
-        //    Label txtabril11 = new Label();
-        //    txtabril11.FontSize = 12;
-        //    txtabril11.TextColor = Color.Blue;
-        //    txtabril11.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril11.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril11.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril11.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril11.Margin = 1;
-        //    stkAbril11.Children.Add(txtabril11);
-
-        //    StackLayout stkAbril12 = new StackLayout();
-        //    stkAbril12.BackgroundColor = Color.White;
-        //    gridCal2.Children.Add(stkAbril12, 6, 1);
-
-        //    Label txtDiaAbril12 = new Label();
-        //    txtDiaAbril12.Text = "12";
-        //    txtDiaAbril12.TextColor = Color.Black;
-        //    txtDiaAbril12.FontAttributes = FontAttributes.Bold;
-        //    txtDiaAbril12.HorizontalOptions = LayoutOptions.Start;
-        //    txtDiaAbril12.VerticalOptions = LayoutOptions.Start;
-        //    txtDiaAbril12.HorizontalTextAlignment = TextAlignment.Start;
-        //    txtDiaAbril12.Margin = 1;
-        //    stkAbril12.Children.Add(txtDiaAbril12);
-
-        //    Label txtabril12 = new Label();
-        //    txtabril12.FontSize = 12;
-        //    txtabril12.TextColor = Color.Blue;
-        //    txtabril12.HorizontalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril12.VerticalOptions = LayoutOptions.CenterAndExpand;
-        //    txtabril12.HorizontalTextAlignment = TextAlignment.Center;
-        //    txtabril12.VerticalTextAlignment = TextAlignment.Center;
-        //    txtabril12.Margin = 1;
-        //    stkAbril12.Children.Add(txtabril12);
-        //}
-        #endregion
         public async void GetDataAbril()
         {
             DateTime fechaMesAbril = new DateTime(2020, 4, 1);
@@ -970,7 +529,7 @@ namespace TiendaSilvia.VentasMes
             txtAgo29.Text = AgostoArr[28].ToString();
             txtAgo30.Text = AgostoArr[29].ToString();
             txtAgo31.Text = AgostoArr[30].ToString();
-            txtTotalAgosto.Text = txtTotalAgosto.ToString() + " BS.";
+            txtTotalAgosto.Text = TotalAgosto.ToString() + " BS.";
 
             GetDataSeptiembre();
         }
@@ -1027,7 +586,7 @@ namespace TiendaSilvia.VentasMes
             txtSep28.Text = SeptiembreArr[27].ToString();
             txtSep29.Text = SeptiembreArr[28].ToString();
             txtSep30.Text = SeptiembreArr[29].ToString();
-            txtTotalSeptiembre.Text = txtTotalSeptiembre.ToString() + " BS.";
+            txtTotalSeptiembre.Text = TotalSeptiembre.ToString() + " BS.";
 
             GetDataOctubre();
         }
@@ -1085,7 +644,7 @@ namespace TiendaSilvia.VentasMes
             txtOct29.Text = OctubreArr[28].ToString();
             txtOct30.Text = OctubreArr[29].ToString();
             txtOct31.Text = OctubreArr[30].ToString();
-            txtTotalOctubre.Text = txtTotalOctubre.ToString() + " BS.";
+            txtTotalOctubre.Text = TotalOctubre.ToString() + " BS.";
 
             GetDataNoviembre();
         }
@@ -1143,7 +702,7 @@ namespace TiendaSilvia.VentasMes
             txtNov28.Text = NoviembreArr[27].ToString();
             txtNov29.Text = NoviembreArr[28].ToString();
             txtNov30.Text = NoviembreArr[29].ToString();
-            txtTotalNoviembre.Text = txtTotalNoviembre.ToString() + " BS.";
+            txtTotalNoviembre.Text = TotalNoviembre.ToString() + " BS.";
 
             GetDataDiciembre();
         }
@@ -1202,7 +761,9 @@ namespace TiendaSilvia.VentasMes
             txtDic29.Text = DiciembreArr[28].ToString();
             txtDic30.Text = DiciembreArr[29].ToString();
             txtDic31.Text = DiciembreArr[29].ToString();
-            txtTotalDiciembre.Text = txtTotalDiciembre.ToString() + " BS.";
+            txtTotalDiciembre.Text = TotalDiciembre.ToString() + " BS.";
+
+            GetTotal2020();
         }
 
         private void BtnGraficos_Clicked(object sender, EventArgs e)
@@ -1217,49 +778,49 @@ namespace TiendaSilvia.VentasMes
 
         private void BtnGraficosMarzo_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }
 
         private void BtnGraficosAbril_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }
         //
         private void BtnGraficosMayo_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }
         private void BtnGraficosJunio_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }
         private void BtnGraficosJulio_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }
         private void BtnGraficosAgosto_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }        
 
         private void BtnGraficosSep_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }
 
         private void BtnGraficosOctubre_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }
 
         private void BtnGraficosNoviembre_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }
 
         private void BtnGraficosDiciembre_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Graficos());
         }
     }
 }
